@@ -24,7 +24,7 @@ GeneticAlgorithm::GeneticAlgorithm(const AdjacencyMatrix& matrix, int _numCities
     numToursToRun = _numToursToRun;
     mutationRate = _mutationRate;
 
-    std::srand(std::time(0));
+    //std::srand(std::time(0));
     InitializePopulation();
 }
 
@@ -56,15 +56,22 @@ void GeneticAlgorithm::InitializePopulation()
         population.push_back(tours);
     }
 
-    std::cout << "Population: \n";
+    std::cout << "Population and Fitness: \n";
     for (const auto& tour : population)
     {
+        // Print the tour
         for (int city : tour)
         {
             std::cout << city << " ";
         }
-        std::cout << std::endl;
+
+        // Evaluate the fitness of the current tour
+        double fitness = EvaluateFitness(tour);
+
+        // Print the fitness value
+        std::cout << " | Fitness: " << fitness << std::endl;
     }
+
 }
 
 /*
@@ -75,7 +82,19 @@ void GeneticAlgorithm::InitializePopulation()
 */
 double GeneticAlgorithm::EvaluateFitness(const std::vector<int>& tour)
 {
-    return 0.0;
+    double totalTourDistance = 0.0;
+
+    for(size_t i = 0; i < tour.size() - 1; ++i)
+    {
+        int x = tour[i];
+        int y = tour[i + 1];
+        totalTourDistance += am.matrix[x][y];
+    }
+
+    // Add distance back to city 0
+    totalTourDistance += am.matrix[tour.back()][0];
+
+    return totalTourDistance;
 }
 
 /*

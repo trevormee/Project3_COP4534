@@ -8,13 +8,13 @@ int main()
 {
     AdjacencyMatrix am;
     am.ReadFileAndPopulate();
-    //am.PrintMatrix();
+    am.PrintMatrix();
 
     int numCities = 7;
     int numToursToRun  = 10;
     double mutationRate = 0.25;
 
-    GeneticAlgorithm ga(am, numCities, numToursToRun, mutationRate);
+   GeneticAlgorithm ga(am, numCities, numToursToRun, mutationRate);
     
     //!!! Brute Force Testing
     //BruteForce bf(am, numCities);
