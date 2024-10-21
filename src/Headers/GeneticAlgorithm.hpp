@@ -10,8 +10,10 @@
 #ifndef GENETICALGORITHM_HPP
 #define GENETICALGORITHM_HPP
 
-#include <vector>
 #include "AdjacencyMatrix.hpp"
+#include <vector>
+#include <random>
+#include <algorithm>
 
 class GeneticAlgorithm
 {

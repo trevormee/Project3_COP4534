@@ -71,7 +71,7 @@ double BruteForce::EvaluateTour(const std::vector<int>& tour)
 {
     double totalTourDistance = 0.0;
 
-    for(int i = 0; i < tour.size() - 1; ++i)
+    for(size_t i = 0; i < tour.size() - 1; ++i)
     {
         int x = tour[i];
         int y = tour[i + 1];

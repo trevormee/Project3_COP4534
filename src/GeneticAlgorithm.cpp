@@ -25,7 +25,6 @@ GeneticAlgorithm::GeneticAlgorithm(const AdjacencyMatrix& matrix, int _numCities
     mutationRate = _mutationRate;
 
     std::srand(std::time(0));
-
     InitializePopulation();
 }
 
@@ -37,7 +36,35 @@ GeneticAlgorithm::GeneticAlgorithm(const AdjacencyMatrix& matrix, int _numCities
 */
 void GeneticAlgorithm::InitializePopulation()
 {
+    for(int i = 0; i < numToursToRun; ++i)
+    {
+        std::vector<int> tours;
 
+        // Start at city 0
+        tours.push_back(0);
+
+        for(int j = 1; j < numCities; ++j)
+        {
+            tours.push_back(j);
+        }
+
+        // End at city 0 
+        tours.push_back(0);
+
+        std::random_shuffle(tours.begin() + 1, tours.end() - 1);
+
+        population.push_back(tours);
+    }
+
+    std::cout << "Population: \n";
+    for (const auto& tour : population)
+    {
+        for (int city : tour)
+        {
+            std::cout << city << " ";
+        }
+        std::cout << std::endl;
+    }
 }
 
 /*
