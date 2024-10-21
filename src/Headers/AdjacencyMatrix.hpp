@@ -22,9 +22,11 @@ class AdjacencyMatrix
         // Private Instance Variables
         const std::string DISTANCES = "../distances.txt";
         const static int ROW_COLUMN_SIZE = 20;
-        double matrix[ROW_COLUMN_SIZE][ROW_COLUMN_SIZE];
 
     public:
+        // Public adjacency matrix 
+        double matrix[ROW_COLUMN_SIZE][ROW_COLUMN_SIZE];
+        
         // Constructor
         AdjacencyMatrix();
 
