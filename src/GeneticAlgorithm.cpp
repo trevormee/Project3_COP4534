@@ -17,16 +17,58 @@
               _numToursToRun: number of tours to run
               _mutationRate: % of generations that should be comprised of mutations
 */
-GeneticAlgorithm::GeneticAlgorithm(const AdjacencyMatrix& matrix, int _numCities, int _numToursToRun, double _mutationRate)
+GeneticAlgorithm::GeneticAlgorithm(const AdjacencyMatrix& matrix, int _numCities, int _numToursToRun, int _numGenerationsToRun, double _mutationRate)
       : am(matrix)
 {
     numCities = _numCities;
     numToursToRun = _numToursToRun;
+    numGenerationsToRun = _numGenerationsToRun;
     mutationRate = _mutationRate;
 
     //std::srand(std::time(0));
     InitializePopulation();
 }
+
+/*
+    @brief
+    @param 
+*/
+void GeneticAlgorithm::perm1(std::vector<int>& s)
+{
+    int m, k, p, q;
+
+    m = numCities - 2;
+
+    while(s[m] > s[m + 1])
+    {
+        m = m - 1;
+    }
+
+    k = numCities - 1;
+    while(s[m] > s[k])
+    {
+        k = k - 1;
+    }
+
+    std::swap(s[m],s[k]);
+
+    p = m + 1;
+    q = numCities - 1;
+    while (p < q)
+    {
+        std::swap(s[p], s[q]);
+        p++;
+        q--;
+    }
+
+    // Remove output for final submission (using for testing)
+    for(int i : s)
+    {   
+        std::cout << i << " ";
+    }
+    std::cout << "0" << std::endl;
+}
+
 
 /*
     @brief
@@ -51,7 +93,7 @@ void GeneticAlgorithm::InitializePopulation()
         // End at city 0 
         tours.push_back(0);
 
-        // Could use perm 1
+        // CHANGE TO USE PERM1
         std::random_shuffle(tours.begin() + 1, tours.end() - 1);
 
         population.push_back(tours);

@@ -35,7 +35,6 @@ class BruteForce
         // Generates Permutations
         void perm1(std::vector<int>& s);
 
-
         // Runs the Brute Force Algorithm
         void RunBruteForce();
 };

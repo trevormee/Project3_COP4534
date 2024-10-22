@@ -29,7 +29,10 @@ class GeneticAlgorithm
     public:
       // Parametrized Constructor
       GeneticAlgorithm(const AdjacencyMatrix& matrix, int _numCities, 
-                       int _numToursToRun, double _mutationRate);
+                       int _numToursToRun, int _numGenerationsToRun, double _mutationRate);
+      
+      // Generates Permuations
+      void perm1(std::vector<int>& s);
       
       // Initialize Population (First generation)
       void InitializePopulation();

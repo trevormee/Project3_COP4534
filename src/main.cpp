@@ -13,9 +13,10 @@ int main()
 
     int numCities = 7;
     int numToursToRun  = 10;
+    int numGenerationsToRun = 10;
     double mutationRate = 0.25;
 
-    GeneticAlgorithm ga(am, numCities, numToursToRun, mutationRate);
+    GeneticAlgorithm ga(am, numCities, numToursToRun, numGenerationsToRun, mutationRate);
     std::cout << std::endl;
     std::vector<int> eliteTour = ga.GetEliteTour();
     for(int i : eliteTour)
