@@ -51,6 +51,7 @@ void GeneticAlgorithm::InitializePopulation()
         // End at city 0 
         tours.push_back(0);
 
+        // Could use perm 1
         std::random_shuffle(tours.begin() + 1, tours.end() - 1);
 
         population.push_back(tours);
@@ -105,7 +106,20 @@ double GeneticAlgorithm::EvaluateFitness(const std::vector<int>& tour)
 */
 std::vector<int> GeneticAlgorithm::GetEliteTour()
 {
-    return {};
+    std::vector<int> eliteTour = population[0];
+    double cheapestTourDistance = EvaluateFitness(eliteTour);
+
+    for(const auto& tour : population)
+    {
+        double currTourDistance = EvaluateFitness(tour);
+        if(currTourDistance < cheapestTourDistance)
+        {
+            cheapestTourDistance = currTourDistance;
+            eliteTour = tour;
+        }
+    }
+
+    return eliteTour;
 }
 
 /*
@@ -125,7 +139,7 @@ std::vector<int> GeneticAlgorithm::Mutate(const std::vector<int>& tour)
 
     @return
 */
-std::vector<int> GeneticAlgorithm::RunGeneticAlgorithm()
+void GeneticAlgorithm::RunGeneticAlgorithm()
 {
-    return {};
+    //return {};
 }

@@ -3,6 +3,7 @@
 #include "Headers/GeneticAlgorithm.hpp"
 
 #include <iostream>
+#include <vector>
 
 int main()
 {
@@ -14,8 +15,16 @@ int main()
     int numToursToRun  = 10;
     double mutationRate = 0.25;
 
-   GeneticAlgorithm ga(am, numCities, numToursToRun, mutationRate);
-    
+    GeneticAlgorithm ga(am, numCities, numToursToRun, mutationRate);
+    std::cout << std::endl;
+    std::vector<int> eliteTour = ga.GetEliteTour();
+    for(int i : eliteTour)
+    {
+        std::cout << i << " ";
+    }
+    std::cout << std::endl;    
+
+
     //!!! Brute Force Testing
     //BruteForce bf(am, numCities);
     //bf.RunBruteForce(); 

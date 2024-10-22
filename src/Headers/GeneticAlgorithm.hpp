@@ -44,6 +44,6 @@ class GeneticAlgorithm
       std::vector<int> Mutate(const std::vector<int>& tour);
 
       // Runs the genetic algorithm
-      std::vector<int> RunGeneticAlgorithm();
+      void RunGeneticAlgorithm();
 };
 #endif
