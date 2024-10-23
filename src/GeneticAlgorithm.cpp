@@ -25,7 +25,7 @@ GeneticAlgorithm::GeneticAlgorithm(const AdjacencyMatrix& matrix, int _numCities
     numGenerationsToRun = _numGenerationsToRun;
     mutationRate = _mutationRate;
 
-    //std::srand(std::time(0));
+    std::srand(std::time(0));
     InitializePopulation();
 }
 
@@ -78,27 +78,28 @@ void GeneticAlgorithm::perm1(std::vector<int>& s)
 */
 void GeneticAlgorithm::InitializePopulation()
 {
-    for(int i = 0; i < numToursToRun; ++i)
+    std::vector<int> tour;
+
+    // Start at city 0
+    tour.push_back(0);
+
+    for(int i = 1; i < numCities; ++i)
     {
-        std::vector<int> tours;
-
-        // Start at city 0
-        tours.push_back(0);
-
-        for(int j = 1; j < numCities; ++j)
-        {
-            tours.push_back(j);
-        }
-
-        // End at city 0 
-        tours.push_back(0);
-
-        // CHANGE TO USE PERM1
-        std::random_shuffle(tours.begin() + 1, tours.end() - 1);
-
-        population.push_back(tours);
+        tour.push_back(i);
     }
 
+    // End at city 0
+    tour.push_back(0);
+
+    population.push_back(tour);
+
+    for(int i = 1; i < numToursToRun; ++i)
+    {
+        perm1(tour);
+        population.push_back(tour);
+    }
+
+    // Used for testing only!
     std::cout << "Population and Fitness: \n";
     for (const auto& tour : population)
     {
@@ -107,14 +108,12 @@ void GeneticAlgorithm::InitializePopulation()
         {
             std::cout << city << " ";
         }
-
         // Evaluate the fitness of the current tour
         double fitness = EvaluateFitness(tour);
 
         // Print the fitness value
         std::cout << " | Fitness: " << fitness << std::endl;
     }
-
 }
 
 /*
@@ -172,7 +171,20 @@ std::vector<int> GeneticAlgorithm::GetEliteTour()
 */
 std::vector<int> GeneticAlgorithm::Mutate(const std::vector<int>& tour)
 {
-    return {};
+    std::vector<int> mutatedTour = tour;
+
+    for(size_t i = 1; i < mutatedTour.size() - 1; ++i)
+    {
+        if ((std::rand() / static_cast<double>(RAND_MAX)) < mutationRate)
+        {
+            std::cout << "Mutated..." << std::endl;
+            int x = std::rand() % (mutatedTour.size() - 2);
+            int y = std::rand() % (mutatedTour.size() - 2);
+            std::swap(mutatedTour[x], mutatedTour[y]);
+        }
+    }
+
+    return mutatedTour;
 }
 
 /*

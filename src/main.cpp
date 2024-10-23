@@ -25,6 +25,12 @@ int main()
     }
     std::cout << std::endl;    
 
+    std::vector<int> mutatedTour = ga.Mutate(eliteTour);
+    for(int i : mutatedTour)
+    {
+        std::cout << i << " ";
+    }
+    std::cout << std::endl; 
 
     //!!! Brute Force Testing
     //BruteForce bf(am, numCities);

@@ -57,7 +57,6 @@ void BruteForce::perm1(std::vector<int>& s)
     }
 
     std::cout << "0" << std::endl;
-
 }
 
 
