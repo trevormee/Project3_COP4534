@@ -9,28 +9,16 @@ int main()
 {
     AdjacencyMatrix am;
     am.ReadFileAndPopulate();
-    am.PrintMatrix();
+   // am.PrintMatrix();
 
     int numCities = 7;
     int numToursToRun  = 10;
-    int numGenerationsToRun = 10;
+    int numGenerationsToRun = 1;
     double mutationRate = 0.25;
 
     GeneticAlgorithm ga(am, numCities, numToursToRun, numGenerationsToRun, mutationRate);
-    std::cout << std::endl;
-    std::vector<int> eliteTour = ga.GetEliteTour();
-    for(int i : eliteTour)
-    {
-        std::cout << i << " ";
-    }
-    std::cout << std::endl;    
-
-    std::vector<int> mutatedTour = ga.Mutate(eliteTour);
-    for(int i : mutatedTour)
-    {
-        std::cout << i << " ";
-    }
-    std::cout << std::endl; 
+    
+    ga.RunGeneticAlgorithm();
 
     //!!! Brute Force Testing
     //BruteForce bf(am, numCities);

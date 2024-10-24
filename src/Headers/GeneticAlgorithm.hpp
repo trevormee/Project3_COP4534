@@ -33,6 +33,9 @@ class GeneticAlgorithm
       
       // Generates Permuations
       void perm1(std::vector<int>& s);
+
+      // Generates Permuations but returns vector
+      std::vector<int> Permutate(std::vector<int>& s);
       
       // Initialize Population (First generation)
       void InitializePopulation();
