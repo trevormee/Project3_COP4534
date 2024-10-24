@@ -26,9 +26,9 @@ void TSP::RunComparison()
     std::cin >> mutationRate;
     */
 
-    int numCities = 12;
-    int numToursToRun  = 50;
-    int numGenerationsToRun = 50;
+    int numCities = 10;
+    int numToursToRun  = 100;
+    int numGenerationsToRun = 100;
     double mutationRate = 0.50;
 
     AdjacencyMatrix am;
