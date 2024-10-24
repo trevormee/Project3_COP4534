@@ -50,6 +50,7 @@ void BruteForce::perm1(std::vector<int>& s)
         q--;
     }
 
+    /*
     // Remove output for final submission (using for testing)
     for(int i : s)
     {   
@@ -57,6 +58,7 @@ void BruteForce::perm1(std::vector<int>& s)
     }
 
     std::cout << "0" << std::endl;
+    */
 }
 
 
@@ -120,7 +122,7 @@ void BruteForce::RunBruteForce()
     double cheapestTourDistance = std::numeric_limits<double>::max();
     std::vector<int> optimalTour;
     int numPermutations = Factorial(numCities - 1);
-    std::cout << "num permutations " << numPermutations<< std::endl;
+    //std::cout << "num permutations " << numPermutations<< std::endl;
 
     // Permutate thru (n-1)! cities and find cheapest tour 
     for(int i = 0; i < numPermutations; ++i)
@@ -141,7 +143,6 @@ void BruteForce::RunBruteForce()
     for(int i : optimalTour) {
         std::cout << i << " ";  
     }
-    std::cout << "0" << std::endl; 
+    std::cout << "0 | Distance (cost): " << cheapestTourDistance;// << std::endl; 
 
-    std::cout << "Most Optimal Tour Distance(cost): " << cheapestTourDistance << std::endl;
 }

@@ -127,6 +127,7 @@ void GeneticAlgorithm::InitializePopulation()
     }
 
     // Used for testing only!
+    /*
     std::cout << "Initial Population..." << std::endl;
     for (const auto& tour : population)
     {
@@ -141,6 +142,7 @@ void GeneticAlgorithm::InitializePopulation()
         // Print the fitness value
         std::cout << " | Fitness: " << fitness << std::endl;
     }
+    */
     
 }
 
@@ -250,14 +252,16 @@ void GeneticAlgorithm::RunGeneticAlgorithm()
 
         population = newGenerationPopulation;
 
-        std::cout << "Generation " << generation << "\n";
+        //std::cout << "Generation " << generation << "\n";
         for (const auto& tour : newGenerationPopulation)
         {
+            /*
             // Print the tour
             for (int city : tour)
             {
                 std::cout << city << " ";
             }
+            */
             eliteTour = GetEliteTour();
             optimalTour = eliteTour;
             // Evaluate Fitness for each tour in a generation
@@ -268,16 +272,16 @@ void GeneticAlgorithm::RunGeneticAlgorithm()
             }
 
             // Print the fitness value
-            std::cout << " | Fitness: " << fitness << std::endl;
+            //std::cout << " | Fitness: " << fitness << std::endl;
         }
 
-        std::cout << "Cheapest Tour Distance of Generation " << generation << " : " << cheapestTourDistance << std::endl;        
+        //std::cout << "Cheapest Tour Distance of Generation " << generation << " : " << cheapestTourDistance << std::endl;        
     }
 
-    std::cout << "Overall Best Tour: ";
+    std::cout << "Most Optimal Tour: ";
     for (int city : optimalTour)
     {
         std::cout << city << " ";
     }
-    std::cout << "| Fitness: " << cheapestTourDistance << std::endl;
+    std::cout << "| Distance (cost): " << cheapestTourDistance; // << std::endl;
 }

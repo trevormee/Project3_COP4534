@@ -1,12 +1,18 @@
-#include "Headers/AdjacencyMatrix.hpp"
-#include "Headers/BruteForce.hpp"
-#include "Headers/GeneticAlgorithm.hpp"
+//#include "Headers/AdjacencyMatrix.hpp"
+//#include "Headers/BruteForce.hpp"
+//#include "Headers/GeneticAlgorithm.hpp"
+#include "Headers/TSP.hpp"
 
 #include <iostream>
 #include <vector>
 
 int main()
 {
+
+    TSP tsp;
+    tsp.RunComparison();
+
+    /*
     AdjacencyMatrix am;
     am.ReadFileAndPopulate();
    // am.PrintMatrix();
@@ -23,6 +29,7 @@ int main()
     //!!! Brute Force Testing
     //BruteForce bf(am, numCities);
     //bf.RunBruteForce(); 
+    */
 
     return 0;
 }
