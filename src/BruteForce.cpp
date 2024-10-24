@@ -139,7 +139,7 @@ void BruteForce::RunBruteForce()
     }
 
     // Ouput most optimal tour and its total distance value
-    std::cout << "Most Optimal Tour: ";
+    std::cout << "Brute Force Most Optimal Tour: ";
     for(int i : optimalTour) {
         std::cout << i << " ";  
     }

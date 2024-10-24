@@ -278,7 +278,7 @@ void GeneticAlgorithm::RunGeneticAlgorithm()
         //std::cout << "Cheapest Tour Distance of Generation " << generation << " : " << cheapestTourDistance << std::endl;        
     }
 
-    std::cout << "Most Optimal Tour: ";
+    std::cout << "Genetic Algorithm Most Optimal Tour: ";
     for (int city : optimalTour)
     {
         std::cout << city << " ";

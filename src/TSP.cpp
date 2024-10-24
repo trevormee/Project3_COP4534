@@ -18,7 +18,7 @@ void TSP::RunComparison()
 
     std::cout << "How many cities to run?" << std::endl;
     std::cin >> numCities;
-    std::cout << "How many indicidual tours are in a given generation?" << std::endl;
+    std::cout << "How many indicidual tours are there in a given generation?" << std::endl;
     std::cin >> numToursToRun;
     std::cout << "How many generations to run?" << std::endl;
     std::cin >> numGenerationsToRun;
@@ -26,7 +26,7 @@ void TSP::RunComparison()
     std::cin >> mutationRate;
     */
 
-    int numCities = 13;
+    int numCities = 12;
     int numToursToRun  = 50;
     int numGenerationsToRun = 50;
     double mutationRate = 0.50;
