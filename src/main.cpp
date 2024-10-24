@@ -13,8 +13,8 @@ int main()
 
     int numCities = 7;
     int numToursToRun  = 10;
-    int numGenerationsToRun = 1;
-    double mutationRate = 0.25;
+    int numGenerationsToRun = 10;
+    double mutationRate = 1.00;
 
     GeneticAlgorithm ga(am, numCities, numToursToRun, numGenerationsToRun, mutationRate);
     

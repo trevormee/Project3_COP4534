@@ -239,9 +239,13 @@ std::vector<int> GeneticAlgorithm::Mutate(const std::vector<int>& tour)
 */
 void GeneticAlgorithm::RunGeneticAlgorithm()
 {
+    std::vector<int> optimalTour;
+    double cheapestTourDistance = std::numeric_limits<double>::max();
+
     for(int generation = 0; generation < numGenerationsToRun; ++generation)
     {
-        std::vector<int> eliteTour = GetEliteTour();
+        std::vector<int> eliteTour = optimalTour;
+        eliteTour = GetEliteTour();
         int numToursToMutate = numToursToRun * mutationRate;
         std::vector<std::vector<int>> newGenerationPopulation;
 
@@ -261,9 +265,10 @@ void GeneticAlgorithm::RunGeneticAlgorithm()
         for(int j = 0; j < remainingToursToPermutate; ++j)
         {
             std::vector<int> permutatedTour = Permutate(eliteTour);
-            //perm1(eliteTour);
             newGenerationPopulation.push_back(permutatedTour);
         }
+
+        population = newGenerationPopulation;
 
         std::cout << "Generation " << generation << "\n";
         for (const auto& tour : newGenerationPopulation)
@@ -273,60 +278,26 @@ void GeneticAlgorithm::RunGeneticAlgorithm()
             {
                 std::cout << city << " ";
             }
-            // Evaluate the fitness of the current mutated tour
+            eliteTour = GetEliteTour();
+            optimalTour = eliteTour;
+            // Evaluate Fitness for each tour in a generation
             double fitness = EvaluateFitness(tour);
+            if(fitness < cheapestTourDistance)
+            {
+                cheapestTourDistance = fitness;
+            }
 
             // Print the fitness value
             std::cout << " | Fitness: " << fitness << std::endl;
         }
-    }
-    /*
-    std::vector<int> eliteTour = GetEliteTour();
-    double cheapestTourDistance = EvaluateFitness(eliteTour);
 
-    for(int i = 0; i < numGenerationsToRun; ++i)
-    {
-        std::vector<std::vector<int>> newGenerationPopulation;
-        newGenerationPopulation.push_back(eliteTour);
-
-        int numToursToMutate = numToursToRun * mutationRate;
-        for(int j = 0; j < numToursToMutate; ++j)
-        {
-            std::vector<int> mutatedTour = Mutate(eliteTour);
-            newGenerationPopulation.push_back(mutatedTour);
-        }
-    }
-        
-        for(int k = numToursToMutate + 1; k < numToursToRun; ++k)
-        {
-            std::vector<int> tourToPermutateFrom = eliteTour;
-            perm1(tourToPermutateFrom);
-            newGenerationPopulation.push_back(tourToPermutateFrom);
-        }
-
-        population = newGenerationPopulation;
-
-        eliteTour = GetEliteTour();
-        double mostEliteTourOfGeneration = EvaluateFitness(eliteTour);
-
-        if(mostEliteTourOfGeneration < cheapestTourDistance)
-        {
-            cheapestTourDistance = mostEliteTourOfGeneration;
-        }       
-
-        std::cout << "Generation " << i + 1 << " Best Tour: ";
-        for (int city : eliteTour)
-        {
-            std::cout << city << " ";
-        }
-        std::cout << "| Fitness: " << mostEliteTourOfGeneration << std::endl;
+        std::cout << "Cheapest Tour Distance of Generation " << generation << " : " << cheapestTourDistance << std::endl;        
     }
 
     std::cout << "Overall Best Tour: ";
-    for (int city : eliteTour)
+    for (int city : optimalTour)
     {
         std::cout << city << " ";
     }
     std::cout << "| Fitness: " << cheapestTourDistance << std::endl;
-    */
 }
