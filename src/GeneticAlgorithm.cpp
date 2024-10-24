@@ -60,15 +60,6 @@ void GeneticAlgorithm::perm1(std::vector<int>& s)
         p++;
         q--;
     }
-
-    // Remove output for final submission (using for testing)
-    /*
-    for(int i : s)
-    {   
-        std::cout << i << " ";
-    }
-    std::cout << "0" << std::endl;
-    */
 }
 
 /*
@@ -76,8 +67,6 @@ void GeneticAlgorithm::perm1(std::vector<int>& s)
 */
 std::vector<int> GeneticAlgorithm::Permutate(std::vector<int>& s)
 {
-    //std::vector<int> permutatedTour = s;
-
     int m, k, p, q;
 
     m = numCities - 2;
@@ -105,15 +94,6 @@ std::vector<int> GeneticAlgorithm::Permutate(std::vector<int>& s)
     }
 
     return s;
-
-    // Remove output for final submission (using for testing)
-    /*
-    for(int i : s)
-    {   
-        std::cout << i << " ";
-    }
-    std::cout << "0" << std::endl;
-    */
 }
 
 
