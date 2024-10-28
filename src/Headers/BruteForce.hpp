@@ -21,16 +21,16 @@ class BruteForce
         // Private Instance Variables
         AdjacencyMatrix am;
         int numCities;
+        
+    public:
+        // Parameterized Constructor
+        BruteForce(const AdjacencyMatrix& matrix, int _numCities);
 
         // Helper method to compute (n-1)! value for RunBruteForce() iterations
         int Factorial(int n);
 
         // Helper function to evaluate the cost of a tour
         double EvaluateTour(const std::vector<int>& tour);
-        
-    public:
-        // Parameterized Constructor
-        BruteForce(const AdjacencyMatrix& matrix, int _numCities);
 
         // Generates Permutations
         void perm1(std::vector<int>& s);
