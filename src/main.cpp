@@ -1,14 +1,20 @@
-#include "Headers/AdjacencyMatrix.hpp"
+/***************************************************************
+  Student Name: Trevor Mee
+  File Name: main.hpp
+  Project 3
+
+  @brief Creates an instance of the TSP class and runs a comparison
+         of the brute force and genetic algorithm solutions
+***************************************************************/
+#include "Headers/TSP.hpp"
 
 #include <iostream>
+#include <vector>
 
 int main()
 {
-    AdjacencyMatrix am;
-    am.ReadFileAndPopulate();
-    am.PrintMatrix();
-
-    std::cout << "end" << std::endl;
+    TSP tsp;
+    tsp.RunComparison();
 
     return 0;
 }
