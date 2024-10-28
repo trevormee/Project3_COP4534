@@ -10,6 +10,12 @@
 
 #include "Headers/TSP.hpp"
 
+/*
+    @brief Essentially acts as the main method of the Traveling Sales
+           Person problem. The function runs the brute force algorithm 
+           solution and genetic algorithm solution while also computing
+           run-times for each solution.
+*/
 void TSP::RunComparison()
 {
     
@@ -40,7 +46,6 @@ void TSP::RunComparison()
 
     clock_gettime(CLOCK_REALTIME, &BFstop);
 
-    // Get run time seconds and nano seconds
     double BFseconds = BFstop.tv_sec - BFstart.tv_sec;
     double BFnanoSeconds = BFstop.tv_nsec - BFstart.tv_nsec;
     double BFtotalTime = BFseconds + BFnanoSeconds / 1e9;

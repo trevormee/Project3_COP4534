@@ -19,8 +19,6 @@
 
 class TSP 
 {
-    private:
-
     public:
         // Runs Comparison Between Brute Force & Genetic Algorithm
         void RunComparison();
