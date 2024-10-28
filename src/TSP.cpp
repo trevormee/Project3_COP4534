@@ -12,7 +12,7 @@
 
 void TSP::RunComparison()
 {
-    /*
+    
     int numCities, numToursToRun, numGenerationsToRun;
     double mutationRate;
 
@@ -24,12 +24,7 @@ void TSP::RunComparison()
     std::cin >> numGenerationsToRun;
     std::cout << "What percentage of a generation should be comprised of mutations? Write in Decimal Format (i.e. If you want a mutation rate of 25%, input 0.25)" << std::endl;
     std::cin >> mutationRate;
-    */
-
-    int numCities = 10;
-    int numToursToRun  = 100;
-    int numGenerationsToRun = 100;
-    double mutationRate = 0.50;
+    
 
     AdjacencyMatrix am;
     am.ReadFileAndPopulate();

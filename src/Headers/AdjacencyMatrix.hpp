@@ -31,9 +31,6 @@ class AdjacencyMatrix
         AdjacencyMatrix();
 
         // Reads in distances.txt & populates adjacency matrix
-        void ReadFileAndPopulate();
-
-        // Prints Matrix (used for testing)
-        void PrintMatrix();    
+        void ReadFileAndPopulate(); 
 };
 #endif

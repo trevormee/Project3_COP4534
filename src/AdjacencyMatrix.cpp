@@ -72,33 +72,3 @@ void AdjacencyMatrix::ReadFileAndPopulate()
 
     fileRead.close();
 }
-
-
-/*
-    @brief prints adjacency matrix (used for testing)
-*/
-void AdjacencyMatrix::PrintMatrix() {
-    
-    const int spacing = 8; 
-
-    // Print column indices
-    std::cout << std::setw(spacing) << " "; 
-    for (int col = 0; col < ROW_COLUMN_SIZE; col++) {
-        std::cout << std::setw(spacing) << col;
-    }
-    std::cout << std::endl;
-
-    // Print matrix
-    for (int i = 0; i < ROW_COLUMN_SIZE; i++) {
-        // Print row index
-        std::cout << std::setw(spacing) << i;
-
-        // Print the row of the matrix
-        for (int j = 0; j < ROW_COLUMN_SIZE; j++) {
-            std::cout << std::setw(spacing) << matrix[i][j];
-        }
-        std::cout << std::endl;
-    }
-
-    std::cout << " -- " << matrix[0][1] << std::endl;
-}
