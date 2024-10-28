@@ -30,8 +30,8 @@ GeneticAlgorithm::GeneticAlgorithm(const AdjacencyMatrix& matrix, int _numCities
 }
 
 /*
-    @brief
-    @param 
+    @brief Generates permutations 
+    @param s: vector to permute through
 */
 void GeneticAlgorithm::perm1(std::vector<int>& s)
 {
@@ -63,7 +63,10 @@ void GeneticAlgorithm::perm1(std::vector<int>& s)
 }
 
 /*
-    PERM1 but returns a vector
+    @brief Generates permutations
+    @param s: vector to permutate through
+
+    @return Permutated vector
 */
 std::vector<int> GeneticAlgorithm::Permutate(std::vector<int>& s)
 {
@@ -98,10 +101,8 @@ std::vector<int> GeneticAlgorithm::Permutate(std::vector<int>& s)
 
 
 /*
-    @brief
-    @param(s)
-
-    @return
+    @brief Initializes first population (generation) to be used
+           in various genetic operatoins
 */
 void GeneticAlgorithm::InitializePopulation()
 {
@@ -125,32 +126,13 @@ void GeneticAlgorithm::InitializePopulation()
         perm1(tour);
         population.push_back(tour);
     }
-
-    // Used for testing only!
-    /*
-    std::cout << "Initial Population..." << std::endl;
-    for (const auto& tour : population)
-    {
-        // Print the tour
-        for (int city : tour)
-        {
-            std::cout << city << " ";
-        }
-        // Evaluate the fitness of the current tour
-        double fitness = EvaluateFitness(tour);
-
-        // Print the fitness value
-        std::cout << " | Fitness: " << fitness << std::endl;
-    }
-    */
-    
 }
 
 /*
-    @brief
-    @param(s)
+    @brief Evaluates the distance (cost) of a tour
+    @param(s) tour: current permutation to evaulate cost of              
 
-    @return
+    @return total distance (cost) of a tour
 */
 double GeneticAlgorithm::EvaluateFitness(const std::vector<int>& tour)
 {
@@ -170,10 +152,11 @@ double GeneticAlgorithm::EvaluateFitness(const std::vector<int>& tour)
 }
 
 /*
-    @brief
-    @param(s)
+    @brief Parses through a population/generation and returns 
+           the tour with the lowest total distance (cost)
 
-    @return
+    @return Tour with cheapest overall distance (cost) in a 
+            population/generation
 */
 std::vector<int> GeneticAlgorithm::GetEliteTour()
 {
@@ -194,10 +177,10 @@ std::vector<int> GeneticAlgorithm::GetEliteTour()
 }
 
 /*
-    @brief
-    @param(s)
+    @brief Performs a mutation on a given tour
+    @param(s) tour: current tour to perform a a mutation on
 
-    @return
+    @return New, mutated tour
 */
 std::vector<int> GeneticAlgorithm::Mutate(const std::vector<int>& tour)
 {
@@ -214,10 +197,7 @@ std::vector<int> GeneticAlgorithm::Mutate(const std::vector<int>& tour)
 }
 
 /*
-    @brief
-    @param(s)
-
-    @return
+    @brief Runs genetic algorithm operations on the dataset
 */
 void GeneticAlgorithm::RunGeneticAlgorithm()
 {
@@ -242,8 +222,8 @@ void GeneticAlgorithm::RunGeneticAlgorithm()
         }
 
         // Find remaining tours to permutate of current generation 
-        // Math: (# tours in each gen - # tours already mutated) - eliteTour @ top [-1] 
         int remainingToursToPermutate = (numToursToRun - numToursToMutate) - 1;
+
         for(int j = 0; j < remainingToursToPermutate; ++j)
         {
             std::vector<int> permutatedTour = Permutate(eliteTour);
@@ -252,16 +232,8 @@ void GeneticAlgorithm::RunGeneticAlgorithm()
 
         population = newGenerationPopulation;
 
-        //std::cout << "Generation " << generation << "\n";
         for (const auto& tour : newGenerationPopulation)
         {
-            /*
-            // Print the tour
-            for (int city : tour)
-            {
-                std::cout << city << " ";
-            }
-            */
             eliteTour = GetEliteTour();
             optimalTour = eliteTour;
             // Evaluate Fitness for each tour in a generation
@@ -270,14 +242,10 @@ void GeneticAlgorithm::RunGeneticAlgorithm()
             {
                 cheapestTourDistance = fitness;
             }
-
-            // Print the fitness value
-            //std::cout << " | Fitness: " << fitness << std::endl;
         }
-
-        //std::cout << "Cheapest Tour Distance of Generation " << generation << " : " << cheapestTourDistance << std::endl;        
     }
 
+    // Print Genetic Algorithm Results
     std::cout << "Genetic Algorithm Most Optimal Tour: ";
     for (int city : optimalTour)
     {
